@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { BrowserRouter as Router, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import { connect } from 'react-redux'
 import './App.css'
 import {handleInitialData} from '../actions/shared'
@@ -10,6 +10,7 @@ import NewPoll from './NewPoll'
 import Nav from './Nav'
 import Login from './Login'
 import Leaderboard from './Leaderboard'
+import NoMatch from './NoMatch'
 
 
 class App extends Component {
@@ -26,11 +27,14 @@ class App extends Component {
       			{this.props.loading === true
               ? <div>loading</div>
               : <div>
-                  <Route path='/' exact component={Dashboard}/>
-                  <Route path='/poll/:id' exact component={Vote}/>
-                  <Route path='/new' exact component={NewPoll}/>
-                  <Route path='/login' exact component={Login}/>
-                  <Route path='/Leaderboard' exact component={Leaderboard}/>
+                  <Switch>
+                    <Route path='/' exact component={Dashboard}/>
+                    <Route path='/question/:question_id' exact component={Vote}/>
+                    <Route path='/new' exact component={NewPoll}/>
+                    <Route path='/login' exact component={Login}/>
+                    <Route path='/Leaderboard' exact component={Leaderboard}/>
+                    <Route component={NoMatch}/>
+                  </Switch>
                 </div>}
       		</div>
         </Fragment>

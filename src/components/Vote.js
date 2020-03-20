@@ -29,11 +29,11 @@ class Vote extends Component{
 }
 
 function mapStateToProps({authedUser,users,polls},ownProps){
-	console.log(polls[ownProps.match.params.id])
-	const poll = polls[ownProps.match.params.id]
+	console.log(polls[ownProps.match.params.question_id])
+	const poll = polls[ownProps.match.params.question_id]
 	const resp = Object.keys(users[authedUser].answers)
-	const pid = ownProps.match.params.id
-	const fullName = users[polls[ownProps.match.params.id].author].name
+	const pid = ownProps.match.params.question_id
+	const fullName = users[polls[ownProps.match.params.question_id].author].name
 	let vars = {}
 	let answered = false
 	if (resp.indexOf(pid)>=0){

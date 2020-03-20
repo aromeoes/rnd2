@@ -11,7 +11,7 @@ class Poll extends Component {
 				<div><p>{this.props.fullName} asks:</p></div>
 				<div><p>Avatar: {this.props.avatar}</p></div>
 				<div><h3>Would you rather</h3> <p>...{this.props.firstOption}...</p></div>
-				<Link to={'/poll/'.concat(this.props.pid)}> View Poll {this.props.pid} </Link>
+				<Link to={'/question/'.concat(this.props.pid)}> View Poll {this.props.pid} </Link>
 				<p> Muestro?: {this.props.display.toString()}</p>
 			</div>
 		)
