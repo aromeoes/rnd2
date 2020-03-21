@@ -30,7 +30,7 @@ class App extends Component {
                   <Switch>
                     <Route path='/' exact component={Dashboard}/>
                     <Route path='/question/:question_id' exact component={Vote}/>
-                    <Route path='/new' exact component={NewPoll}/>
+                    <Route path='/add' exact component={NewPoll}/>
                     <Route path='/login' exact component={Login}/>
                     <Route path='/Leaderboard' exact component={Leaderboard}/>
                     <Route component={NoMatch}/>

@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
+import { Redirect } from 'react-router-dom'
 
 class Leaderboard extends Component {
 	render(){
-		
+		if (this.props.redilog){
+			return <Redirect to='/login'/>
+		}
 		return(
 			<div>
 				<h1>Leaderboard</h1>
@@ -25,7 +27,12 @@ class Leaderboard extends Component {
 	}
 }
 
-function mapStateToProps({users}){
+function mapStateToProps({users,authedUser}){
+	if (authedUser===''){
+		return{
+			redilog:true
+		}
+	}
 	var leaderList = []
 	Object.keys(users).map((key) => 
 		leaderList.push({

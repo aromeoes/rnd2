@@ -37,6 +37,9 @@ class NewPoll extends Component{
 		}))
 	}
 	render(){
+		if (this.props.redilog){
+			return <Redirect to='/login'/>
+		}
 		const {text, text2, toHome} = this.state
 		if (toHome){
 			return <Redirect to='/'/>
@@ -70,4 +73,12 @@ class NewPoll extends Component{
 	}
 }
 
-export default connect()(NewPoll)
+function mapStateToProp({authedUser}) {
+	if (authedUser===''){
+		return{
+			redilog:true
+		}
+	}
+}
+
+export default connect(mapStateToProp)(NewPoll)

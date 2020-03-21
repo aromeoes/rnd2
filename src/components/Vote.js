@@ -3,9 +3,16 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import VoteAnswered from './VoteAnswered'
 import VoteUnAnswered from './VoteUnAnswered'
+import { Redirect } from 'react-router-dom'
 
 class Vote extends Component{
 	render(){
+		if (this.props.redi){
+			return <Redirect to='/error'/>
+		}
+		if (this.props.redilog){
+			return <Redirect to='/login'/>
+		}
 		let show;
 		if (this.props.answered){
 			show = <VoteAnswered 
@@ -29,8 +36,18 @@ class Vote extends Component{
 }
 
 function mapStateToProps({authedUser,users,polls},ownProps){
+	if (authedUser===''){
+		return{
+			redilog:true
+		}
+	}
 	console.log(polls[ownProps.match.params.question_id])
 	const poll = polls[ownProps.match.params.question_id]
+	if (!poll){
+		return{
+			redi:true
+		}
+	}
 	const resp = Object.keys(users[authedUser].answers)
 	const pid = ownProps.match.params.question_id
 	const fullName = users[polls[ownProps.match.params.question_id].author].name

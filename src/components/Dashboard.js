@@ -4,6 +4,12 @@ import Poll from '../components/Poll'
 //import Button from '@material-ui/core/Button';
 
 function mapStateToProps( {polls, users, authedUser} ){
+  if (authedUser==''){
+  	return{
+  		pollsIds: Object.keys(polls),
+  		fullName: 'User not logged'
+  	}
+  }
   return { 
   	pollsIds: Object.keys(polls),
   	fullName: users[authedUser].name

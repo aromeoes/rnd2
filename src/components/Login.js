@@ -22,6 +22,11 @@ class Login extends Component{
 		dispatch(setAuthedUser(this.state.user))
 		this.setState(()=>({toHome:true,}))
 	}
+	componentDidMount(){
+		const { dispatch } = this.props
+		console.log('comp mount')
+		dispatch(setAuthedUser(''))
+	}
 	render(){
 		if (this.state.toHome){
 			return <Redirect to='/'/>
