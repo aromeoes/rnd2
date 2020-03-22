@@ -11,7 +11,12 @@ class Vote extends Component{
 			return <Redirect to='/error'/>
 		}
 		if (this.props.redilog){
-			return <Redirect to='/login'/>
+			return <Redirect 
+			to={{
+				pathname:'/login',
+				state: {after:window.location.pathname}
+			}}
+			/>
 		}
 		let show;
 		if (this.props.answered){

@@ -5,7 +5,14 @@ import { Redirect } from 'react-router-dom'
 class Leaderboard extends Component {
 	render(){
 		if (this.props.redilog){
-			return <Redirect to='/login'/>
+			console.log(window.location.pathname)
+			return <Redirect 
+			to={{
+				pathname:'/login',
+				state: {after:window.location.pathname}
+			}}
+
+			/>
 		}
 		return(
 			<div>

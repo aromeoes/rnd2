@@ -38,7 +38,12 @@ class NewPoll extends Component{
 	}
 	render(){
 		if (this.props.redilog){
-			return <Redirect to='/login'/>
+			return <Redirect 
+			to={{
+				pathname:'/login',
+				state: {after:window.location.pathname}
+			}}
+			/>
 		}
 		const {text, text2, toHome} = this.state
 		if (toHome){

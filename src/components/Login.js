@@ -28,8 +28,14 @@ class Login extends Component{
 		dispatch(setAuthedUser(''))
 	}
 	render(){
+		if (!this.props.location.state){
+			return <Redirect to='/' />
+		}
+		const next = this.props.location.state.after
+		console.log(next,'next')
+		
 		if (this.state.toHome){
-			return <Redirect to='/'/>
+			return <Redirect to={next} />
 		}
 		return(
 			
